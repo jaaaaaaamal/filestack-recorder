@@ -1,0 +1,15 @@
+<script src="https://static.filestackapi.com/filestack.js"></script>
+<button onclick="recordAudio()">Record Audio</button>
+<script>
+  function recordAudio() {
+    const client = filestack.init('AIc4BBthwRJ6o1XiigKYiz');
+    client.picker({
+      fromSources: ['microphone'],
+      accept: ['audio/*'],
+      onUploadDone: (res) => {
+        console.log(res.filesUploaded[0].url);
+        alert('Recording Complete: ' + res.filesUploaded[0].url);
+      },
+    }).open();
+  }
+</script>
